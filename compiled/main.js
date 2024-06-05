@@ -113,10 +113,10 @@ export var Tools;
     Tools.Rekursif = Rekursif;
     class LinearRegression {
         data;
-        XValue;
-        constructor(data, XValue) {
+        xValue;
+        constructor(data, xValue) {
             this.data = data;
-            this.XValue = XValue;
+            this.xValue = xValue;
         }
         get SimpleLinearRegression() {
             let x = [];
@@ -131,11 +131,11 @@ export var Tools;
                 (x.length * totalX ** 2 - totalX ** 2);
             let B = (x.length * (totalX * totalY) - totalX * totalY) /
                 (x.length * totalX ** 2 - totalX ** 2);
-            let Y = A + B * this.XValue;
+            let Y = A + B * this.xValue;
             return `
             X Data = ${x.join(', ')}
             Y Data = ${y.join(', ')}
-            X Value = ${this.XValue}
+            X Value = ${this.xValue}
             Y Value = ${Y}`;
         }
     }

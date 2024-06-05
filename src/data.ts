@@ -2,8 +2,8 @@ import { Tools, Interfaces } from './main.js';
 import data from './data.json' assert { type: 'json' };
 
 const linearRegression = new Tools.LinearRegression<
-    Array<Interfaces.Datas<Interfaces.Xy>>,
+    Array<Interfaces.Xy>,
     number
->(data, 10);
+>(data, 7653);
 
 console.log(linearRegression.SimpleLinearRegression);

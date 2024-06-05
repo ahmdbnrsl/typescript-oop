@@ -5,10 +5,6 @@ export namespace Interfaces {
         x: number;
         y: number;
     }
-
-    export interface Datas<T> extends Xy {
-        [index: number]: T;
-    }
 }
 
 export namespace Tools {
@@ -122,12 +118,12 @@ export namespace Tools {
     }
 
     export class LinearRegression<
-        Type extends Array<Interfaces.Datas<Interfaces.Xy>>,
-        XV extends number
+        Data extends Array<Interfaces.Xy>,
+        XValue extends number
     > {
         constructor(
-            private data: Type,
-            private XValue: XV
+            private data: Data,
+            private xValue: XValue
         ) {}
 
         get SimpleLinearRegression(): string {
@@ -150,12 +146,12 @@ export namespace Tools {
                 (x.length * (totalX * totalY) - totalX * totalY) /
                 (x.length * totalX ** 2 - totalX ** 2);
 
-            let Y: number = A + B * this.XValue;
+            let Y: number = A + B * this.xValue;
 
             return `
             X Data = ${x.join(', ')}
             Y Data = ${y.join(', ')}
-            X Value = ${this.XValue}
+            X Value = ${this.xValue}
             Y Value = ${Y}`;
         }
     }
