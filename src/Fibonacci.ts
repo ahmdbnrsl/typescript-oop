@@ -1,5 +1,5 @@
 import { Tools } from './main.js';
 
-const tools = new Tools.Rekursif<number>(0, 8);
+const tools = new Tools.Rekursif<number>(7);
 
-tools.Fibonacci;
+tools.Faktorial;

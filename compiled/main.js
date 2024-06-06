@@ -1,5 +1,29 @@
 export var Tools;
 (function (Tools) {
+    Tools.PI = (radius) => radius % 7 === 0 ? 22 / 7 : 3.14;
+    class Volume {
+        static Kubus = (sisi) => sisi ** 3;
+        static Balok = (panjang, lebar, tinggi) => panjang * lebar * tinggi;
+        static Tabung = (radius, tinggi) => Tools.PI(radius) * radius * radius * tinggi;
+        static Bola = (radius) => Tools.PI(radius) * radius * radius * radius;
+    }
+    Tools.Volume = Volume;
+    class Luas {
+        static PermukaanKubus = (sisi) => sisi * sisi * 6 + ' cm²';
+        static PermukaanBalok = (panjang, lebar, tinggi) => {
+            let luasAtasBawah = panjang * lebar;
+            let luasSamping = panjang * tinggi;
+            let luasDepanBelakang = lebar * tinggi;
+            return ((luasAtasBawah + luasSamping + luasDepanBelakang) * 2 + ' cm²');
+        };
+        static PermukaanTabung = (radius, tinggi) => {
+            let kelilingLingkaran = Tools.PI(radius) * radius;
+            let luasAlasTutup = Tools.PI(radius) * radius * radius * 2;
+            let luasSisiTabung = kelilingLingkaran * tinggi;
+            return luasAlasTutup + luasSisiTabung + ' cm²';
+        };
+    }
+    Tools.Luas = Luas;
     class MathOperations {
         data1;
         data2;

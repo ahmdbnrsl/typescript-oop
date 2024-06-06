@@ -8,6 +8,44 @@ export namespace Interfaces {
 }
 
 export namespace Tools {
+    export const PI = (radius: number): number =>
+        radius % 7 === 0 ? 22 / 7 : 3.14;
+    export class Volume {
+        static Kubus = (sisi: number): number => sisi ** 3;
+        static Balok = (
+            panjang: number,
+            lebar: number,
+            tinggi: number
+        ): number => panjang * lebar * tinggi;
+        static Tabung = (radius: number, tinggi: number): number =>
+            PI(radius) * radius * radius * tinggi;
+        static Bola = (radius: number): number =>
+            PI(radius) * radius * radius * radius;
+    }
+    export class Luas {
+        static PermukaanKubus = (sisi: number): string =>
+            sisi * sisi * 6 + ' cm²';
+        static PermukaanBalok = (
+            panjang: number,
+            lebar: number,
+            tinggi: number
+        ): string => {
+            let luasAtasBawah: number = panjang * lebar;
+            let luasSamping: number = panjang * tinggi;
+            let luasDepanBelakang: number = lebar * tinggi;
+
+            return (
+                (luasAtasBawah + luasSamping + luasDepanBelakang) * 2 + ' cm²'
+            );
+        };
+        static PermukaanTabung = (radius: number, tinggi: number): string => {
+            let kelilingLingkaran: number = PI(radius) * radius;
+            let luasAlasTutup: number = PI(radius) * radius * radius * 2;
+            let luasSisiTabung: number = kelilingLingkaran * tinggi;
+
+            return luasAlasTutup + luasSisiTabung + ' cm²';
+        };
+    }
     export class MathOperations<Operand, Operators> {
         constructor(
             private data1: Operand,
