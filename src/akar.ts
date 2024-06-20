@@ -1,0 +1,4 @@
+import { Tools } from './main.js';
+
+const akar = new Tools.Akar<number>(10000);
+console.info(akar.result);

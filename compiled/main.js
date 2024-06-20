@@ -164,4 +164,49 @@ export var Tools;
         }
     }
     Tools.LinearRegression = LinearRegression;
+    class Akar {
+        numbers;
+        constructor(numbers) {
+            this.numbers = numbers;
+        }
+        get result() {
+            return Math.sqrt(this.numbers);
+        }
+    }
+    Tools.Akar = Akar;
+    class Factor {
+        num1;
+        num2;
+        constructor(num1, num2) {
+            this.num1 = num1;
+            this.num2 = num2;
+        }
+        get RESULT() {
+            let FPB = 0;
+            let KPK = 0;
+            let smaller = Math.min(this.num1, this.num2);
+            for (let i = 1; i <= smaller; i++) {
+                if (this.num1 % i === 0 && this.num2 % i === 0) {
+                    FPB = i;
+                }
+            }
+            function gcd(a, b) {
+                for (let temp = b; b !== 0;) {
+                    b = a % b;
+                    a = temp;
+                    temp = b;
+                }
+                return a;
+            }
+            function lcmFunction(a, b) {
+                const gcdValue = gcd(a, b);
+                return (a * b) / gcdValue;
+            }
+            KPK = lcmFunction(this.num1, this.num2);
+            return `
+            FPB = ${FPB}
+            KPK = ${KPK}`;
+        }
+    }
+    Tools.Factor = Factor;
 })(Tools || (Tools = {}));

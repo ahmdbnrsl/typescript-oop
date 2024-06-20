@@ -193,4 +193,50 @@ export namespace Tools {
             Y Value = ${Y}`;
         }
     }
+
+    export class Akar<T extends number> {
+        constructor(private numbers: T) {}
+
+        get result(): T {
+            return Math.sqrt(this.numbers) as T;
+        }
+    }
+
+    export class Factor<T extends number> {
+        constructor(
+            private num1: T,
+            private num2: T
+        ) {}
+
+        get RESULT(): string {
+            let FPB = 0;
+            let KPK = 0;
+            let smaller = Math.min(this.num1, this.num2);
+
+            for (let i = 1; i <= smaller; i++) {
+                if (this.num1 % i === 0 && this.num2 % i === 0) {
+                    FPB = i;
+                }
+            }
+
+            function gcd(a: number, b: number): number {
+                for (let temp = b; b !== 0; ) {
+                    b = a % b;
+                    a = temp;
+                    temp = b;
+                }
+                return a;
+            }
+
+            function lcmFunction(a: number, b: number): number {
+                const gcdValue = gcd(a, b);
+                return (a * b) / gcdValue;
+            }
+            KPK = lcmFunction(this.num1, this.num2);
+
+            return `
+            FPB = ${FPB}
+            KPK = ${KPK}`;
+        }
+    }
 }
