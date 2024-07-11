@@ -10,6 +10,16 @@ export namespace Interfaces {
 export namespace Tools {
     export const PI = (radius: number): number =>
         radius % 7 === 0 ? 22 / 7 : 3.14;
+    export class Pythagoras<T extends number> {
+        constructor(
+            private alas: T,
+            private sisi: T
+        ) {}
+        get result(): T {
+            return Math.sqrt(this.alas ** 2 + this.sisi ** 2) as T;
+        }
+    }
+
     export class Volume {
         static Kubus = (sisi: number): number => sisi ** 3;
         static Balok = (

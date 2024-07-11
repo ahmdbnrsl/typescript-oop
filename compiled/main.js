@@ -1,6 +1,18 @@
 export var Tools;
 (function (Tools) {
     Tools.PI = (radius) => radius % 7 === 0 ? 22 / 7 : 3.14;
+    class Pythagoras {
+        alas;
+        sisi;
+        constructor(alas, sisi) {
+            this.alas = alas;
+            this.sisi = sisi;
+        }
+        get result() {
+            return Math.sqrt(this.alas ** 2 + this.sisi ** 2);
+        }
+    }
+    Tools.Pythagoras = Pythagoras;
     class Volume {
         static Kubus = (sisi) => sisi ** 3;
         static Balok = (panjang, lebar, tinggi) => panjang * lebar * tinggi;
